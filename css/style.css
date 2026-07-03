@@ -1,0 +1,578 @@
+:root {
+    --clr-blk: #040404;
+    --clr-drk: #191919;
+    --clr-lt: #c8c5bc;
+    --clr-wht: #f2f1ef;
+    --clr-accent: #eace82;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== General Styles ========== */
+
+body {
+    background-color: var(--clr-drk);
+    /* background-image: url('../img/background.webp');
+    background-size: 100%;
+    background-position: center; */
+}
+
+/* ========== Font Styles ========== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+p.body {
+    font-family: Fira Sans, sans-serif;
+    font-size: 1rem;
+    font-weight:200;
+    color: var(--clr-lt);
+    text-align: justify;
+}
+
+p.body-c {
+    font-family: Fira Sans, sans-serif;
+    font-size: 1rem;
+    font-weight:400;
+    color: var(--clr-lt);
+    text-align: center;
+}
+
+p.title {
+    font-family: Fira Sans, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--clr-wht);
+}
+
+p.title-dec {
+    font-family: Birthstone, cursive;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--clr-wht);
+}
+
+p.heading {
+    font-family: Fira Sans, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--clr-wht);
+}
+
+p.heading-dec {
+    font-family: Birthstone, cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--clr-wht);
+}
+
+/* ========== Box Styles ========== */
+
+.box {
+    font-size: 1rem;
+    background-color: hsla(0, 0%, 0%, 0.6);
+    outline: 1px solid var(--clr-accent);
+    /* width: 100%;
+    height: 200px; */
+    padding: 20px;
+    border-radius: 0rem;
+    margin-top: 8rem;
+    margin-right: 0rem;
+    margin-bottom: 1rem;
+    margin-left: 0rem;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn-pill {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 28px;
+  margin: 1rem;
+  border: 2px solid var(--clr-accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--clr-wht);
+  font-family: Fira Sans, sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pill:hover {
+  background: var(--clr-accent);
+  color: var(--clr-blk);
+  transform: scale(1.1);
+}
+
+/* ========== Navigation Styles ========== */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: hsla(0, 0%, 0%, 0.65);
+    border-radius: 0rem 0rem 1.5rem 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.logo h3 {
+    font-family: Fira Sans, bold;
+    font-size: 28px;
+    color: var(--clr-blk);
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    display: block;
+    padding: 30px 16px;
+    color: var(--clr-wht);
+    text-decoration: none;
+    font-family: Fira Sans, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: all ease-in-out 100ms;
+}
+
+.nav-links a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.1);
+}
+
+.nav-links .nav-cta-button {
+    padding: 10px 18px;
+    margin-left: 16px;
+    border: 2px solid var(--clr-accent);
+    border-radius: 50px;
+}
+
+.nav-links .nav-cta-button:hover {
+    background-color: var(--clr-accent);
+    color: var(--clr-blk);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 34px;
+}
+
+.hamburger .bar {
+    flex-basis: 100%;
+    height: 4px;
+    background-color: var(--clr-wht);
+    margin: 3px;
+}
+
+/* ========== Responsive Design ========== */
+
+@media (max-width: 768px) {
+    
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        height: 80px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-basis: 100%;
+        flex-wrap: wrap;
+    }
+
+    .nav-links li {
+        flex-basis: 100%;
+    }
+
+    .nav-links a {
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .navlinks a:hover {
+        background-color: var(--clr-accent);
+    }
+
+    .nav-links .nav-cta-button {
+        padding: 30px 16px;
+        margin-left: 0;
+        border: none;
+        border-radius: 0;
+        margin-bottom: 20px;
+    }
+
+    .nav-links .nav-cta-button:hover {
+        background-color: var(--clr-accent);
+    }
+}
+
+/* ========== Masonry Photo Gallery ========== */
+
+.masonry-gallery-section {
+  /* Edit these to match your site's look */
+  --gallery-gap: 1rem;
+  --gallery-radius: 1rem;
+  --gallery-placeholder-bg: #f0f0f0;
+  --lightbox-bg: rgba(10, 10, 10, 0.92);
+
+  padding: var(--gallery-gap);
+}
+
+.gallery {
+  column-count: 4;
+  column-gap: var(--gallery-gap);
+}
+
+@media (max-width: 1100px) {
+  .gallery { column-count: 3; }
+}
+@media (max-width: 700px) {
+  .gallery { column-count: 2; }
+}
+@media (max-width: 420px) {
+  .gallery { column-count: 1; }
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  margin: 0 0 var(--gallery-gap);
+  border-radius: var(--gallery-radius);
+  background: var(--gallery-placeholder-bg);
+  cursor: zoom-in;
+  break-inside: avoid;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.gallery img:hover {
+  transform: translateY(-2px);
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.gallery img:focus-visible {
+  outline: 3px solid #4da3ff;
+  outline-offset: 2px;
+}
+
+.gallery-empty {
+  text-align: center;
+  color: #777;
+  padding: 2rem 1rem;
+  font-family: sans-serif;
+}
+
+/* ========== Lightbox ========== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: var(--lightbox-bg, rgba(10, 10, 10, 0.92));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 90vw;
+  max-height: 92vh;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+
+.lightbox.active .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--clr-lt);
+  font-family: fira sans, italic;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.lightbox-caption a {
+  color: var(--clr-accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.lightbox-caption a:hover {
+  color: #cfe3ff;
+}
+
+.lightbox-caption a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.5rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 1;
+}
+
+.lightbox-close {
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.lightbox-prev {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+
+.lightbox-close:focus-visible,
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery img,
+  .lightbox,
+  .lightbox-img {
+    transition: none;
+  }
+}
+
+/* ============================================
+   TITLE CARD GRID
+   Houses multiple title cards and spaces them out evenly
+   ============================================ */
+.title-card-grid {
+  display: flex;              /* lay cards out in a row */
+  flex-wrap: wrap;            /* wrap to a new row when there's no more space */
+  justify-content: center;    /* center the row(s) of cards */
+  gap: 32px;                  /* even spacing between cards, horizontally and between rows */
+  margin: 40px;                /* keeps the grid off the edges of the page */
+}
+
+/* ============================================
+   TITLE CARD
+   The clickable card itself (wraps image + text as one link)
+   ============================================ */
+.title-card {
+  display: block;
+  width: 320px;                /* card size */
+  border-radius: 20px;         /* corner radius */
+  text-decoration: none;       /* removes the default link underline */
+  color: inherit;              /* removes the default link color */
+  overflow: hidden;            /* clips the image/text to the rounded corners */
+  background-color: #ffffff;   /* card background, independent of the page background */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Card hover: lifts the whole card slightly */
+.title-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Card hover: zooms the photo in slightly (paired with .title-card__image below) */
+.title-card:hover .title-card__image {
+  transform: scale(1.04);
+}
+
+/* ============================================
+   MEDIA (photo area)
+   Crops the image to a consistent aspect ratio, regardless of source size
+   ============================================ */
+.title-card__media {
+  overflow: hidden;            /* clips the image when it's zoomed via object-fit/scale */
+  aspect-ratio: 4 / 5;         /* portrait ratio to match the reference graphic */
+}
+
+.title-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* fills the frame without distorting the photo */
+  display: block;
+  transition: transform 0.4s ease; /* smooths the hover zoom effect */
+}
+
+/* ============================================
+   TEXT BLOCK (title + style, below the photo)
+   ============================================ */
+.title-card__text {
+  padding: 22px 26px 28px;
+  background-color: #ffffff;   /* white behind the title/style text */
+}
+
+/* "Portfolio Title" — Fira Sans Bold, uses existing --clr-blk constant */
+.title-card__title {
+  margin: 0 0 4px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--clr-blk);
+}
+
+/* "Portfolio Style" — Fira Sans Regular, uses existing --clr-accent constant */
+.title-card__style {
+  margin: 0;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--clr-accent);
+}
+
+/* ============================================
+   GALLERY HEADER
+   ============================================ */
+
+.hero-wrap {
+  position: relative;
+  height: 160vh; /* viewport height + extra scroll range for the fade */
+}
+
+.hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 40%;
+  will-change: filter, transform;
+  filter: blur(0px) brightness(1);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 60%, var(--clr-drk) 100%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  will-change: opacity, transform;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero__eyebrow {
+  letter-spacing: 0.2em;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.hero__scroll {
+  position: absolute;
+  color: var(--clr-accent);
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
