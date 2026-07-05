@@ -1,4 +1,7 @@
 (function () {
+  if (typeof CONFIG === 'undefined') return;  // not a gallery page, stop here safely
+
+(function () {
   var gallery = document.getElementById('gallery');
   var emptyMsg = document.getElementById('gallery-empty');
   var lightbox = document.getElementById('lightbox');
@@ -6,7 +9,6 @@
   var btnClose = document.getElementById('lightbox-close');
   var btnPrev = document.getElementById('lightbox-prev');
   var btnNext = document.getElementById('lightbox-next');
-
   var images = [];
   var currentIndex = 0;
 
@@ -16,7 +18,7 @@
 
   function updateLightboxImage() {
     var filename = images[currentIndex];
-    lightboxImg.src = 'images/' + filename;
+    lightboxImg.src = CONFIG.GALLERY + '/images/' + filename;
     lightboxImg.alt = filenameToAlt(filename);
   }
 
@@ -59,27 +61,24 @@
     if (e.key === 'ArrowLeft') showPrev();
   });
 
-  fetch('./manifest.json', { cache: 'no-store' })
+  fetch(CONFIG.GALLERY + '/manifest.json', { cache: 'no-store' })
     .then(function (res) {
       if (!res.ok) throw new Error('manifest.json not found');
       return res.json();
     })
     .then(function (list) {
       images = Array.isArray(list) ? list : [];
-
       if (images.length === 0) {
         emptyMsg.hidden = false;
         return;
       }
-
       images.forEach(function (filename, index) {
         var img = document.createElement('img');
-        img.src = 'images/' + filename;
+        img.src = CONFIG.GALLERY + '/images/' + filename;
         img.alt = filenameToAlt(filename);
         img.loading = 'lazy';
         img.tabIndex = 0;
         img.setAttribute('role', 'button');
-
         img.addEventListener('click', function () {
           openLightbox(index);
         });
@@ -89,7 +88,6 @@
             openLightbox(index);
           }
         });
-
         gallery.appendChild(img);
       });
     })
@@ -99,37 +97,41 @@
       emptyMsg.textContent = 'Could not load images. Make sure manifest.json exists and lists your image filenames.';
     });
 })();
+})();
+
 
     // ============================================
     //               GALLERY HEADER
     // ============================================
-const heroWrap = document.querySelector('.hero-wrap');
-const heroImg = document.getElementById('heroImg');
-const heroContent = document.getElementById('heroContent');
+(function () {
+  const heroWrap = document.querySelector('.hero-wrap');
+  const heroImg = document.getElementById('heroImg');
+  const heroContent = document.getElementById('heroContent');
 
-const MAX_BLUR = 14;         // px, how blurry it gets at max scroll
-const MIN_BRIGHTNESS = 0.35; // 1 = normal, lower = darker
-const MAX_SCALE = 1.12;      // slight zoom-in adds depth as it blurs
+  if (!heroWrap || !heroImg || !heroContent) return;
 
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-window.scrollTo(0, 0);
-function onHeroScroll() {
-  const fadeRange = heroWrap.offsetHeight - window.innerHeight; // extra scroll distance
-  const progress = Math.min(Math.max(window.scrollY / fadeRange, 0), 1);
+  const MAX_BLUR = 14;
+  const MIN_BRIGHTNESS = 0.35;
+  const MAX_SCALE = 1.12;
 
-  const blur = progress * MAX_BLUR;
-  const brightness = 1 - progress * (1 - MIN_BRIGHTNESS);
-  const scale = 1 + progress * (MAX_SCALE - 1);
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
 
-  heroImg.style.filter = `blur(${blur}px) brightness(${brightness})`;
-  heroImg.style.transform = `scale(${scale})`;
+  function onHeroScroll() {
+    const fadeRange = window.innerHeight; // effect plays over one full viewport of scrolling
+    const progress = Math.min(Math.max(window.scrollY / fadeRange, 0), 1);
+    const blur = progress * MAX_BLUR;
+    const brightness = 1 - progress * (1 - MIN_BRIGHTNESS);
+    const scale = 1 + progress * (MAX_SCALE - 1);
+    heroImg.style.filter = `blur(${blur}px) brightness(${brightness})`;
+    heroImg.style.transform = `scale(${scale})`;
+    heroContent.style.opacity = 1 - progress * 1.3;
+    heroContent.style.transform = `translateY(${progress * -40}px)`;
+  }
 
-  heroContent.style.opacity = 1 - progress * 1.3;
-  heroContent.style.transform = `translateY(${progress * -40}px)`;
-}
-
-window.addEventListener('scroll', onHeroScroll, { passive: true });
-window.addEventListener('resize', onHeroScroll);
-onHeroScroll();
+  window.addEventListener('scroll', onHeroScroll, { passive: true });
+  window.addEventListener('resize', onHeroScroll);
+  onHeroScroll();
+})();
