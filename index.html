@@ -13,13 +13,16 @@
   <title>Caleb Mooneyham Photo</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 <!-- =====================================================================
                                 NAVIGATION BAR
      ===================================================================== -->
     <nav>
         <div class="logo">
+          <a href="./index.html">
             <img src="./img/logo.svg" alt="./img/logo.webp">
+          </a>
         </div>
         <div class="hamburger">
             <div class="bar"></div>
@@ -31,7 +34,7 @@
             <li><a href="./index.html#about">About</a></li>
             <li><a href="./index.html#services">Services</a></li>
             <li><a href="./portfolio.html">Galleries</a></li>
-            <li><a class="nav-cta-button" href="#contact">Contact</a></li>
+            <li><a class="nav-cta-button" href="#" id="contact-btn">Contact</a></li>
         </ul>
     </nav>
 <!-- =====================================================================
@@ -56,26 +59,171 @@
 
   <!-- ====== END GALLERY HEADER ====== -->
 <section class="about-me-box" id="about">
+  <div class="about-me-image">
+    <picture>
+    <source media="(max-width: 768px)" srcset="./img/about-mob.webp">
+    <img src="./img/about-dsk2.webp" alt="Caleb Mooneyham, photographer, lying on the ground taking a photo">
+    </picture>
+    </div>
   <div class="about-me-text">
-<p class="heading-acc">About Me</p>
-<p class="body">Hi, I'm Caleb Mooneyham — a portrait and wedding photographer based in Pontotoc, Mississippi, serving families and couples all across North Mississippi.</p>
-<p class="body">I believe the best photos happen when people forget the camera's even there. That's why you won't find a lot of stiff posing or "chin down, shoulders back" direction in my sessions. Instead, I'll give you a little guidance to get things started, then let the moment take over — the real laugh, the inside joke, the way you actually hold your kid's hand. Those are the details I'm after.</p>
-<p class="body">My goal for every session is simple: make it feel easy. Easy to show up as yourselves, easy to relax in front of the camera, and easy to work with me from our first conversation to the moment your gallery lands in your inbox. I want you looking back at these photos years from now and remembering how that day actually felt — not just how it looked.</p>
-<p class="body">If that sounds like the kind of experience you're looking for, I'd love to hear from you.</p>
-</div>
-<div class="about-me-image">
-<picture>
-<source media="(max-width: 768px)" srcset="./img/about-mob.webp">
-<img src="./img/about-dsk2.webp" alt="Caleb Mooneyham, photographer, lying on the ground taking a photo">
-</picture>
-</div>
+    <p class="heading-acc">About Me</p>
+    <p class="body">Hi, I'm Caleb Mooneyham — a portrait and wedding photographer based in Pontotoc, Mississippi, serving families and couples all across North Mississippi.</p>
+    <p class="body">I believe the best photos happen when people forget the camera's even there. That's why you won't find a lot of stiff posing or "chin down, shoulders back" direction in my sessions. Instead, I'll give you a little guidance to get things started, then let the moment take over — the real laugh, the inside joke, the way you actually hold your kid's hand. Those are the details I'm after.</p>
+    <p class="body">My goal for every session is simple: make it feel easy. Easy to show up as yourselves, easy to relax in front of the camera, and easy to work with me from our first conversation to the moment your gallery lands in your inbox. I want you looking back at these photos years from now and remembering how that day actually felt — not just how it looked.</p>
+    <p class="body">If that sounds like the kind of experience you're looking for, I'd love to hear from you.</p>
+    </div>
 </section>
 
+<!-- =============================================================================
+                                    Packages
+     ============================================================================= -->
+<section id="services">
+  <div style="height: 3rem;"></div>
 
     <div class="boxnm">
-        <p class="heading">Under Construction</p>
-        <p class="body">If you need anything in the meantime, feel free to reach out! 662-760-2012</p>
+  <p class="title-dec">Photography Packages</p>
+  <p class="body-c">Simple pricing. Real moments. Timeless images.</p>
     </div>
+<section class="packages-section">
+  
+  <div class="packages-grid">
+
+    <a href="gal_portraiture.html" class="package-card">
+      <div class="package-image">
+        <img src="./img/port-card.webp" alt="Portrait and senior session example" style="object-position: top;">
+      </div>
+      <div class="package-content">
+        <p class="package-name">PORTRAIT / SENIOR SESSIONS</p>
+        <div class="package-tiers">
+          <div class="tier">
+            <p class="tier-price">$200</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2 Hours</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 1 Location</p>
+          </div>
+          <div class="tier">
+            <p class="tier-price">$300</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 Hours</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 2 Location</p>
+          </div>
+        </div>
+        <span class="package-arrow">&#8250;</span>
+      </div>
+    </a>
+
+    <a href="#" class="package-card">
+      <div class="package-image">
+        <img src="./img/family-sessions.webp" alt="Family and group session example">
+      </div>
+      <div class="package-content">
+        <p class="package-name">FAMILY / GROUP SESSIONS</p>
+        <div class="package-tiers">
+          <div class="tier">
+            <p class="tier-price">$200</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 Minutes</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 1 Location</p>
+          </div>
+          <div class="tier">
+            <p class="tier-price">$300</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 Hour</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 2 Location</p>
+          </div>
+        </div>
+        <span class="package-arrow">&#8250;</span>
+      </div>
+    </a>
+
+    <a href="gal_studio.html" class="package-card">
+      <div class="package-image">
+        <img src="./galleries/studio/card.webp" alt="Studio and headshot session example" style="object-position: top;">
+      </div>
+      <div class="package-content">
+        <p class="package-name">STUDIO / HEADSHOT SESSIONS</p>
+        <div class="package-tiers">
+          <div class="tier">
+            <p class="tier-price">$100</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 Minutes</p>
+            <p class="tier-detail"><svg class="icon-hanger" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7"/><path d="M12 7l8.5 6.5a1 1 0 0 1-.6 1.8H4.1a1 1 0 0 1-.6-1.8L12 7z"/><line x1="3" y1="19" x2="21" y2="19"/></svg> 1 Outfit</p>
+          </div>
+          <div class="tier">
+            <p class="tier-price">$150</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 Hour</p>
+            <p class="tier-detail"><svg class="icon-hanger" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7"/><path d="M12 7l8.5 6.5a1 1 0 0 1-.6 1.8H4.1a1 1 0 0 1-.6-1.8L12 7z"/><line x1="3" y1="19" x2="21" y2="19"/></svg> 2 Outfits</p>
+          </div>
+        </div>
+        <span class="package-arrow">&#8250;</span>
+      </div>
+    </a>
+
+    <!--
+    <a href="#" class="package-card">
+      <div class="package-image">
+        <img src="./img/seasonal-minis.webp" alt="Seasonal mini session example">
+      </div>
+      <div class="package-content">
+        <p class="package-name">SEASONALS / MINIS</p>
+        <div class="package-tiers package-tiers-single">
+          <div class="tier">
+            <p class="tier-price">$100</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 Minutes</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Predetermined Location</p>
+          </div>
+        </div>
+        <span class="package-arrow">&#8250;</span>
+      </div>
+    </a>
+    -->
+
+    <!--
+    <a href="#" class="package-card">
+      <div class="package-image">
+        <img src="./img/couples-engagements.webp" alt="Couples and engagement session example">
+      </div>
+      <div class="package-content">
+        <p class="package-name">COUPLES / ENGAGEMENTS</p>
+        <div class="package-tiers package-tiers-single">
+          <div class="tier">
+            <p class="tier-price">$200</p>
+            <p class="tier-detail"><svg class="icon-clock" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 Hour</p>
+            <p class="tier-detail"><svg class="icon-pin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 1 Location</p>
+          </div>
+        </div>
+        <span class="package-arrow">&#8250;</span>
+      </div>
+    </a>
+    -->
+
+    <!--
+  <a href="#" class="package-card">
+    <div class="package-image">
+      <img src="./img/wedding-coverage.webp" alt="Wedding coverage example">
+    </div>
+    <div class="package-content">
+      <p class="package-name">WEDDING COVERAGE</p>
+      <div class="package-tiers package-tiers-single">
+        <div class="tier">
+          <p class="tier-price">Starting at $1,500</p>
+          <p class="tier-detail">Custom packages available</p>
+        </div>
+      </div>
+      <span class="package-arrow">&#8250;</span>
+    </div>
+  </a>
+    -->
+
+  </div>
+
+  <p class="body packages-footer">
+    <svg class="icon-cal" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Travel within North Mississippi included.
+    <span class="footer-divider">|</span>
+    Add-ons available upon request.
+  </p>
+</section>
+
+<!-- =============================================================================
+                                    PACKAGES END
+     ============================================================================= -->
+
 <!-- =============================================================================
                                     WEBSITE FOOTER
      ============================================================================= -->
@@ -109,7 +257,68 @@
 <!-- =============================================================================
                                   WEBSITE FOOTER END
      ============================================================================= -->
-</body>
+
+<!-- =============================================================================
+                                CONTACT MODAL
+============================================================================= -->
+     <div id="contact-modal" class="modal-overlay" hidden>
+  <div class="modal-box">
+    <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    <p class="heading-acc">Let's Talk</p>
+    <p class="body">Fill this out and it'll open a pre-written email for you to send.</p>
+
+    <form id="contact-form" action="https://formspree.io/f/mojgaaaw" method="POST">
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="name" required>
+
+      <label for="contact-email">Your Email</label>
+      <input type="email" id="contact-email" name="email" required>
+
+      <label for="contact-phone">Phone Number</label>
+      <input type="tel" id="contact-phone" name="phone" placeholder="(662) 555-0123">
+
+      <label for="contact-package">Session Type</label>
+      <select id="contact-package" name="package" required>
+        <option value="" disabled selected>Select a session type</option>
+        <option value="Portrait / Senior Sessions">Portrait / Senior Sessions</option>
+        <option value="Family / Group Sessions">Family / Group Sessions</option>
+        <option value="Studio / Headshot Sessions">Studio / Headshot Sessions</option>
+        <option value="Seasonals / Minis">Seasonals / Minis</option>
+        <option value="Couples / Engagements">Couples / Engagements</option>
+        <option value="Wedding Coverage">Wedding Coverage</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" rows="4" required></textarea>
+
+      <button type="submit" class="modal-submit">Send</button>
+    </form>
+    <p class="body modal-alt-contact">Prefer to reach out directly?</p>
+
+    <div class="modal-alt-links">
+      <a href="tel:16627602012" class="modal-alt-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (662) 760-2012
+      </a>
+
+      <a href="mailto:caleb@calebmooneyham.com" class="modal-alt-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 6-10 7L2 6"/>
+        </svg>
+        caleb@calebmooneyham.com
+      </a>
+    </div>
+  </div>
+</div>
+<!-- =============================================================================
+                                CONTACT MODAL END
+============================================================================= -->
+
+    </body>
 
 <script src="./js/navigation.js"></script>
 <script src="./js/script.js"></script>

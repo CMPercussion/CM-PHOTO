@@ -1,13 +1,13 @@
-// Optional helper: regenerates manifest.json from whatever is in /images.
+// Helper: regenerates manifest.json and manifest.js from whatever is in /images.
 // Run with: node generate-manifest.js
-// (Requires Node.js installed on your computer. Not needed if you'd rather
-// edit manifest.json by hand.)
+// (Requires Node.js installed on your computer.)
 
 const fs = require('fs');
 const path = require('path');
 
 const imagesDir = path.join(__dirname, 'images');
 const manifestPath = path.join(__dirname, 'manifest.json');
+const manifestJsPath = path.join(__dirname, 'manifest.js');
 const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
 
 if (!fs.existsSync(imagesDir)) {
@@ -20,6 +20,8 @@ const files = fs
   .filter((f) => allowedExtensions.includes(path.extname(f).toLowerCase()))
   .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
 
-fs.writeFileSync(manifestPath, JSON.stringify(files, null, 2) + '\n');
-console.log('manifest.json updated with ' + files.length + ' image(s):');
+const json = JSON.stringify(files, null, 2);
+fs.writeFileSync(manifestPath, json + '\n');
+fs.writeFileSync(manifestJsPath, 'window.GALLERY_MANIFEST = ' + json + ';\n');
+console.log('manifest.json and manifest.js updated with ' + files.length + ' image(s):');
 files.forEach((f) => console.log('  - ' + f));

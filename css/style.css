@@ -96,6 +96,8 @@ p.heading-dec {
     margin-right: 0rem;
     margin-bottom: 1rem;
     margin-left: 0rem;
+      backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .boxnm {
@@ -110,6 +112,8 @@ p.heading-dec {
     margin-right: 0rem;
     margin-bottom: 0rem;
     margin-left: 0rem;
+      backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .logo-main {
@@ -149,6 +153,7 @@ p.heading-dec {
 
 .about-me-box {
   display: flex;
+  background-color: hsla(0, 0%, 0%, 1);
 }
 
 .about-me-text {
@@ -211,7 +216,11 @@ nav {
     align-items: center;
     padding: 10px 20px;
     background-color: hsla(0, 0%, 0%, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     border-radius: 0rem 0rem 1.5rem 1.5rem;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .logo {
@@ -327,6 +336,15 @@ nav {
     }
 }
 
+/* ========== smooth scrolling margin ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 80px; /* match this to your nav bar's height */
+}
+
 /* ========== Masonry Photo Gallery ========== */
 
 .masonry-gallery-section {
@@ -363,12 +381,17 @@ nav {
   cursor: zoom-in;
   break-inside: avoid;
   transition: opacity 0.25s ease, transform 0.25s ease;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .gallery img:hover {
   transform: translateY(-2px);
   opacity: 0.75;
+  border-color: rgba(255, 255, 255, 0.35);
   cursor: pointer;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 .gallery img:focus-visible {
@@ -525,20 +548,23 @@ nav {
    ============================================ */
 .title-card {
   display: block;
-  width: 320px;                /* card size */
-  border-radius: 20px;         /* corner radius */
-  text-decoration: none;       /* removes the default link underline */
-  color: inherit;              /* removes the default link color */
-  overflow: hidden;            /* clips the image/text to the rounded corners */
-  background-color: #ffffff;   /* card background, independent of the page background */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 320px;
+  border-radius: 1rem;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
 }
 
 /* Card hover: lifts the whole card slightly */
 .title-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* Card hover: zooms the photo in slightly (paired with .title-card__image below) */
@@ -551,8 +577,36 @@ nav {
    Crops the image to a consistent aspect ratio, regardless of source size
    ============================================ */
 .title-card__media {
-  overflow: hidden;            /* clips the image when it's zoomed via object-fit/scale */
-  aspect-ratio: 4 / 5;         /* portrait ratio to match the reference graphic */
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  position: relative;
+}
+
+.title-card__media::before,
+.title-card__media::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.title-card__media::before {
+  height: 140px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+.title-card__media::after {
+  height: 70px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.04) 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 60%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60%);
 }
 
 .title-card__image {
@@ -567,29 +621,44 @@ nav {
    TEXT BLOCK (title + style, below the photo)
    ============================================ */
 .title-card__text {
-  padding: 22px 26px 28px;
-  background-color: #ffffff;   /* white behind the title/style text */
+  position: relative;
+  margin-top: -70px;
+  padding: 90px 26px 28px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 160px,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 70px, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 70px, black 100%);
 }
 
 /* "Portfolio Title" — Fira Sans Bold, uses existing --clr-blk constant */
 .title-card__title {
   margin: 0 0 4px;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
+  font-weight: 200;
   font-size: 1.7rem;
   letter-spacing: -0.01em;
   line-height: 1.15;
-  color: var(--clr-blk);
+  color: var(--clr-wht);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 /* "Portfolio Style" — Fira Sans Regular, uses existing --clr-accent constant */
 .title-card__style {
   margin: 0;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 1.15rem;
   color: var(--clr-accent);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
+
 
 /* ============================================
    GALLERY HEADER
@@ -668,11 +737,16 @@ nav {
 
 
 .site-footer {
-  background-color: var(--clr-blk);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
+  background-color: hsla(0, 0%, 0%, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border-radius: 0rem 0rem 1.5rem 1.5rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .footer-logo img {
@@ -707,4 +781,314 @@ nav {
     padding: 24px 20px;
     text-align: center;
   }
+}
+
+/* ---------------- PACKAGES --------------- */
+.packages-section {
+  padding: 60px 40px;
+  text-align: center;
+  color: var(--clr-wht);
+}
+
+.packages-title {
+  margin: 0 0 8px 0;
+}
+
+.packages-subtitle {
+  margin: 0 0 40px 0;
+  opacity: 0.75;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.package-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.package-image {
+  height:500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.package-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+}
+
+.package-content {
+  position: relative;
+  margin-top: -70px;
+  padding: 40px 20px 20px 20px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 60px,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 70px, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 70px, black 100%);
+}
+
+.package-name {
+  font-family: Fira Sans, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.package-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.package-tiers-single {
+  grid-template-columns: 1fr;
+}
+
+.tier-price {
+  font-family: Fira Sans, sans-serif;
+  font-size: 1.5rem;
+  margin: 0 0 6px 0;
+}
+
+.tier-detail {
+  font-family: Fira Sans, sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tier-detail svg,
+.packages-footer svg {
+  flex-shrink: 0;
+  color: var(--clr-accent);
+}
+
+.package-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 1.3rem;
+  opacity: 0.8;
+}
+
+.packages-footer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-divider {
+  opacity: 0.4;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .packages-section {
+    padding: 40px 20px;
+  }
+}
+
+/* ========== Contact Modal ========== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: var(--clr-wht);
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--clr-wht);
+  font-size: 1.3rem;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-box .heading-acc {
+  margin: 0 0 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-box .body {
+  margin: 0 0 16px 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.modal-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-box label {
+  font-family: Fira Sans, sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.modal-box input,
+.modal-box textarea {
+  font-family: Fira Sans, sans-serif;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--clr-wht);
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+}
+
+.modal-submit {
+  background: none;
+  border: 1px solid var(--clr-accent);
+  color: var(--clr-accent);
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-submit:hover {
+  background-color: var(--clr-accent);
+  color: var(--clr-blk);
+}
+
+.modal-box select {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--clr-wht);
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.modal-box select:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+}
+
+.modal-box .modal-alt-contact {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  opacity: 0.75;
+  font-family: "Fira Sans", sans-serif;
+  text-align: center;
+}
+
+.modal-alt-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-alt-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--clr-accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.modal-alt-item svg {
+  flex-shrink: 0;
+  color: var(--clr-accent);
+}
+
+.modal-alt-item:hover {
+  text-decoration: underline;
 }

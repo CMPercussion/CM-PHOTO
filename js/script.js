@@ -1,7 +1,6 @@
 (function () {
   if (typeof CONFIG === 'undefined') return;  // not a gallery page, stop here safely
 
-(function () {
   var gallery = document.getElementById('gallery');
   var emptyMsg = document.getElementById('gallery-empty');
   var lightbox = document.getElementById('lightbox');
@@ -11,6 +10,8 @@
   var btnNext = document.getElementById('lightbox-next');
   var images = [];
   var currentIndex = 0;
+
+  if (!gallery || !emptyMsg) return;
 
   function filenameToAlt(filename) {
     return filename.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
@@ -23,14 +24,16 @@
   }
 
   function openLightbox(index) {
+    if (!lightbox || !lightboxImg) return;
     currentIndex = index;
     updateLightboxImage();
     lightbox.classList.add('active');
-    btnClose.focus();
+    if (btnClose) btnClose.focus();
     document.body.style.overflow = 'hidden';
   }
 
   function closeLightbox() {
+    if (!lightbox || !lightboxImg) return;
     lightbox.classList.remove('active');
     lightboxImg.src = '';
     document.body.style.overflow = '';
@@ -46,57 +49,92 @@
     updateLightboxImage();
   }
 
-  btnClose.addEventListener('click', closeLightbox);
-  btnNext.addEventListener('click', showNext);
-  btnPrev.addEventListener('click', showPrev);
+  if (btnClose) btnClose.addEventListener('click', closeLightbox);
+  if (btnNext) btnNext.addEventListener('click', showNext);
+  if (btnPrev) btnPrev.addEventListener('click', showPrev);
 
-  lightbox.addEventListener('click', function (e) {
-    if (e.target === lightbox) closeLightbox();
-  });
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
 
   document.addEventListener('keydown', function (e) {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox || !lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') showNext();
     if (e.key === 'ArrowLeft') showPrev();
   });
 
-  fetch(CONFIG.GALLERY + '/manifest.json', { cache: 'no-store' })
-    .then(function (res) {
-      if (!res.ok) throw new Error('manifest.json not found');
-      return res.json();
-    })
-    .then(function (list) {
-      images = Array.isArray(list) ? list : [];
-      if (images.length === 0) {
-        emptyMsg.hidden = false;
-        return;
-      }
-      images.forEach(function (filename, index) {
-        var img = document.createElement('img');
-        img.src = CONFIG.GALLERY + '/images/' + filename;
-        img.alt = filenameToAlt(filename);
-        img.loading = 'lazy';
-        img.tabIndex = 0;
-        img.setAttribute('role', 'button');
-        img.addEventListener('click', function () {
-          openLightbox(index);
-        });
-        img.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openLightbox(index);
-          }
-        });
-        gallery.appendChild(img);
-      });
-    })
-    .catch(function (err) {
-      console.error('Gallery error:', err);
+  function renderGallery(list) {
+    images = Array.isArray(list) ? list : [];
+    if (images.length === 0) {
       emptyMsg.hidden = false;
-      emptyMsg.textContent = 'Could not load images. Make sure manifest.json exists and lists your image filenames.';
+      return;
+    }
+    images.forEach(function (filename, index) {
+      var img = document.createElement('img');
+      img.src = CONFIG.GALLERY + '/images/' + filename;
+      img.alt = filenameToAlt(filename);
+      img.loading = 'lazy';
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', function () {
+        openLightbox(index);
+      });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(index);
+        }
+      });
+      gallery.appendChild(img);
     });
-})();
+  }
+
+  function showError(err) {
+    console.error('Gallery error:', err);
+    emptyMsg.hidden = false;
+    emptyMsg.textContent = 'Could not load images. Run "node generate-manifest.js" inside the gallery folder to update manifest.js and manifest.json.';
+  }
+
+  function loadManifestFromJson() {
+    return fetch(CONFIG.GALLERY + '/manifest.json', { cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('manifest.json not found');
+        return res.json();
+      });
+  }
+
+  function loadManifestFromScript() {
+    return new Promise(function (resolve, reject) {
+      window.GALLERY_MANIFEST = undefined;
+      var script = document.createElement('script');
+      var src = CONFIG.GALLERY + '/manifest.js';
+      if (window.location.protocol !== 'file:') {
+        src += '?v=' + Date.now();
+      }
+      script.src = src;
+      script.onload = function () {
+        if (Array.isArray(window.GALLERY_MANIFEST)) {
+          resolve(window.GALLERY_MANIFEST);
+        } else {
+          reject(new Error('manifest.js did not define GALLERY_MANIFEST'));
+        }
+      };
+      script.onerror = function () {
+        reject(new Error('manifest.js not found'));
+      };
+      document.head.appendChild(script);
+    });
+  }
+
+  loadManifestFromScript()
+    .catch(function () {
+      return loadManifestFromJson();
+    })
+    .then(renderGallery)
+    .catch(showError);
 })();
 
 
@@ -135,3 +173,52 @@
   window.addEventListener('resize', onHeroScroll);
   onHeroScroll();
 })();
+
+// ============ formspree ============
+
+document.addEventListener('DOMContentLoaded', function () {
+  const openBtn = document.getElementById('contact-btn');
+  const modal = document.getElementById('contact-modal');
+  const form = document.getElementById('contact-form');
+
+  if (!openBtn || !modal || !form) return;
+
+  const closeBtn = modal.querySelector('.modal-close');
+
+  openBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    modal.hidden = false;
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      modal.hidden = true;
+    });
+  }
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) modal.hidden = true;
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          modal.hidden = true;
+          form.reset();
+          alert("Thanks! Your message has been sent.");
+        } else {
+          alert("Something went wrong. Please try again or email me directly.");
+        }
+      })
+      .catch(function () {
+        alert("Something went wrong. Please try again or email me directly.");
+      });
+  });
+});

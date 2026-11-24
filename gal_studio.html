@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio and Headshots</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    const CONFIG = {
+      GALLERY: "./galleries/studio"  // ← only line you change per file
+    };
+  </script>
+</head>
+
+<!-- ====== GALLERY TEMPLATE INSTRUCTIONS ====== -->
+<!--
+     1. Place photos in the 'images' folder.
+     2. Run "node generate-manifest.js" to update the manifest.json file with the image filenames.
+     3. Change site title (7), Gallery title (42), and description (43).
+     4. Update the "full-quality-photos" link in the lightbox caption (63) and in the download button.
+-->
+
+<body>
+<background-image src="./img/background.webp" alt="img/background.webp">
+
+<!-- =====================================================================
+                                NAVIGATION BAR
+     ===================================================================== -->
+    <nav>
+        <div class="logo">
+          <a href="./index.html">
+            <img src="./img/logo.svg" alt="./img/logo.webp">
+          </a>
+        </div>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#services">Services</a></li>
+            <li><a href="./portfolio.html">Galleries</a></li>
+            <li><a class="nav-cta-button" href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+<!-- =====================================================================
+                            NAVIGATION BAR END
+     ===================================================================== -->
+
+  <!-- ====== GALLERY HEADER ====== -->
+  <div class="hero-wrap">
+    <section class="hero">
+    <div class="hero__img" id="heroImg" data-gallery="header.webp"></div>      
+    <div class="hero__overlay"></div>
+      <div class="hero__content" id="heroContent">
+        <div class="hero__eyebrow">Portfolio</div>
+        <p class="title-dec">
+          Portfolio: Studio and Headshots
+        </p>
+        <p class="body-c">
+        Clean, professional portraits built for how you actually use them — LinkedIn, business cards, team pages. Simple lighting, minimal fuss, and a final image that looks like the best version of you.
+        </p>
+      </div>
+      <div class="hero__scroll">Scroll to explore ↓</div>
+    </section>
+  </div>
+
+  <div class="btn-container">
+    <a class="btn-pill" href="https://drive.google.com/drive/folders/1RS8Qz35kXbuze2qtXF6RnYdf8FBFYTKT?usp=sharing">Download Full Quality Photos</a>
+  </div>
+
+  <!-- ====== END GALLERY HEADER ====== -->
+
+
+  <!-- ====== GALLERY ====== -->
+  <section class="masonry-gallery-section">
+  <div class="gallery" id="gallery"></div>
+  <p class="gallery-empty" id="gallery-empty" hidden>
+    No images found yet. Drop some into the <code>images</code> folder and list them in <code>manifest.json</code>.
+  </p>
+  </section> 
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="">
+      <p class="lightbox-caption">
+        The above photo is a reduced quality, sample image. The full quality images can be downloaded
+        <a href="https://drive.google.com/drive/folders/1RS8Qz35kXbuze2qtXF6RnYdf8FBFYTKT?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.
+      </p>
+      </div>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
+  </div>
+</div> 
+  <!-- ====== END GALLERY ====== -->
+
+  <!-- =============================================================================
+                                    WEBSITE FOOTER
+     ============================================================================= -->
+<footer class="site-footer">
+  <div class="footer-logo">
+    <a href="./index.html">
+      <img src="./img/logo.svg" alt="Caleb Mooneyham Photography logo">
+    </a>
+  </div>
+
+  <p class="body-c">Copyright &copy; 2026 Caleb Mooneyham Photography. All rights reserved.</p>
+
+  <div class="footer-social">
+    <a href="https://www.facebook.com/calebmooneyhamphoto" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+      </svg>
+    </a>
+    <a href="https://instagram.com/calebmooneyhamphoto" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465a4.9 4.9 0 0 1 1.771 1.153 4.9 4.9 0 0 1 1.153 1.771c.248.637.415 1.363.465 2.428.05 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.217 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.771 4.9 4.9 0 0 1-1.771 1.153c-.637.248-1.363.415-2.428.465-1.066.05-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.217-2.428-.465a4.9 4.9 0 0 1-1.771-1.153 4.9 4.9 0 0 1-1.153-1.771c-.248-.637-.415-1.363-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.771A4.9 4.9 0 0 1 5.45.526C6.087.278 6.812.111 7.878.06 8.944.01 9.283 0 12 0zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zm5.25-8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5z"/>
+      </svg>
+    </a>
+    <a href="mailto:caleb@calebmooneyham.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 2.24l-7.4 5.55a1 1 0 0 1-1.2 0L4 8.24V18h16V8.24z"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+<!-- =============================================================================
+                                  WEBSITE FOOTER END
+     ============================================================================= -->
+
+  <script src="./js/script.js"></script>
+  <script src="./js/navigation.js"></script>
+  <script>
+    document.querySelectorAll('[data-gallery]').forEach(el => {
+      const fullPath = CONFIG.GALLERY + "/" + el.dataset.gallery;
+      if ('src' in el) {
+        el.src = fullPath;
+      } else if ('href' in el) {
+        el.href = fullPath;
+      } else {
+        el.style.backgroundImage = `url('${fullPath}')`;
+      }
+    });
+  </script>
+</body>
+</html>

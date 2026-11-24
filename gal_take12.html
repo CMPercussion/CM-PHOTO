@@ -23,10 +23,14 @@
 <body>
 <background-image src="./img/background.webp" alt="img/background.webp">
 
-<!-- ========== NAVIGATION BAR ========= -->
+<!-- =====================================================================
+                                NAVIGATION BAR
+     ===================================================================== -->
     <nav>
         <div class="logo">
-            <img src="./img/logo.svg" alt="./../../img/logo.webp">
+          <a href="./index.html">
+            <img src="./img/logo.svg" alt="./img/logo.webp">
+          </a>
         </div>
         <div class="hamburger">
             <div class="bar"></div>
@@ -35,14 +39,15 @@
         </div>
         <ul class="nav-links">
             <li><a href="./index.html">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#services">Services</a></li>
             <li><a href="./portfolio.html">Galleries</a></li>
             <li><a class="nav-cta-button" href="#contact">Contact</a></li>
         </ul>
     </nav>
-
-  <!-- ====== END NAVIGATION BAR ====== -->
+<!-- =====================================================================
+                            NAVIGATION BAR END
+     ===================================================================== -->
 
   <!-- ====== GALLERY HEADER ====== -->
   <div class="hero-wrap">
@@ -138,7 +143,6 @@
         el.style.backgroundImage = `url('${fullPath}')`;
       }
     });
-  </script>
   </script>
 </body>
 </html>

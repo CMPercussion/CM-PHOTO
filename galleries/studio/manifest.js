@@ -1,0 +1,10 @@
+window.GALLERY_MANIFEST = [
+  "001.webp",
+  "002.webp",
+  "003.webp",
+  "004.webp",
+  "005.webp",
+  "007.webp",
+  "008.webp",
+  "009.webp"
+];
